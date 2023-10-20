@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <section>
+        <div class="container py-1 h-90">
+            <div class="row d-flex justify-content-center h-90">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                  <div class="card-body p-4 text-center">
+                    <div class="mb-md-4 mt-md-4">
+                      <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                      <p class="text-white-50 mb-2">Please enter your username and password!</p>
+                      <div class="text-danger" th:if="${param.error}">
+                          Invalid username and password.
+                      </div>
+                      <div th:if="${param.logout}">
+                          You have been logged out.
+                      </div>
+                      <form th:action="@{/login}" method="post">
+                          <div class="form-group ">
+                              <div class="d-flex align-items-start my-2">
+                                <label  class="align-left" for="username ">Username</label>
+                              </div>
+                              <input type="text" class="form-control" id="username" name="username" required>
+                          </div>
+                     
+                          <br>
+                          <div class="form-group">
+                              <div class="d-flex align-items-start my-2">
+                                <label class="align-left" for="password">Password</label>
+                              </div>
+                              <input type="password" class="form-control" id="password" name="password" required>
+                          </div>
+                          <button type="submit" class="btn btn-light mt-3 mb-2" style="font-weight: 500;">Login</button>
+                      </form>
+                      <a th:href="@{/}" style="color: white; font-weight: 500; font-size: 18px; text-decoration: none;">&#x2190; Back</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+</body>
+</html>

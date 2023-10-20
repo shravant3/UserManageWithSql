@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <section>
+        <div class="container py-1 h-90">
+            <div class="row d-flex justify-content-center h-90">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                  <div class="card-body p-4 text-center">
+                    <div class="mb-md-4 mt-md-4">
+
+                        <div th:if="${session.msgp}" th:classappend="${session.msgp.type}" class="alert" role="alert">
+                            <p class="text-center" th:text="${session.msgp.content}"></p>
+                          </div>
+                          <th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <img class="icon-regi " src="" th:src="@{/img/reset.jpeg}" alt="">
+                        </div>
+
+                      <h2 class="fw-bold mb-2 text-uppercase">Update Password</h2>
+                      
+                      <form th:action="@{/admin/updatepassword}" method="post">
+                          <div class="form-group ">
+                              <div class="d-flex align-items-start my-2">
+                                <label  class="align-left" for="password_label">Old Password</label>
+                              </div>
+                              <input type="password" name="old" class="form-control" id="password_label" required>
+                          </div>
+                     
+                          <br>
+                          <div class="form-group">
+                              <div class="d-flex align-items-start my-2">
+                                <label class="align-left" for="password_label1">New Password</label>
+                              </div>
+                              <input type="password" class="form-control" id="password_label" name="newpass" required>
+                          </div>
+                          <button type="submit" class="btn btn-light mt-3 mb-2" style="font-weight: 500;">Update</button>
+                      </form>
+                      <a th:href="@{/user/}" style="color: white; font-weight: 500; font-size: 18px; text-decoration: none;">&#x2190; Back</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    </section>
+</body>
+</html>

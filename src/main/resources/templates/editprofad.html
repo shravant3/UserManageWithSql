@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+<body>
+    
+      <section>
+        <div class="container py-1 h-90">
+            <div class="row d-flex justify-content-center h-90">
+              <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                  <div class="card-body p-4 text-center">
+                    <div class="mb-md-4 mt-md-4">
+                      <h2 class="fw-bold mb-2 text-uppercase">Edit Profile</h2>
+                        <div th:each="users:${user}">
+                          <form method="post" action="" th:action="@{/admin/editprofile}">
+                            <div class="d-flex align-items-start my-2">
+                              <label for="idinput" class="form-label">ID : [[${user.id}]]</label>
+                            </div>
+                            <div class="form-group">
+                              <div class="d-flex align-items-start my-2">
+                                <label  class="align-left" for="name">Name</label>
+                              </div>
+                              <input type="text" class="form-control" id="name" th:value="${user.name}" name="name">
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                              <div class="d-flex align-items-start my-2">
+                                <label  class="align-left" for="email">Email</label>
+                              </div>
+                              <input type="text" class="form-control" id="email" th:value="${user.email}" name="email">
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                              <div class="d-flex align-items-start my-2">
+                                <label  class="align-left" for="age">Age</label>
+                              </div>
+                              <input type="text" class="form-control" id="age" th:value="${user.age}" name="age">
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                              <div class="d-flex align-items-start my-2">
+                                <label  class="align-left" for="address">Address</label>
+                              </div>
+                              <input type="text" class="form-control" id="address" th:value="${user.address}" name="address">
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                              <div class="d-flex align-items-start my-2">
+                                <label  class="align-left" for="phone">Phone</label>
+                              </div>
+                              <input type="text" class="form-control" id="phone" th:value="${user.phone}" name="phone">
+                            </div>
+                            <br>
+
+                            <button type="submit" class="btn btn-light mt-3 mb-2" style="font-weight: 500;">Update</button>
+                          </form>
+                          <br>
+                          <a th:href="@{/admin/}" style="color: white; font-weight: 500; font-size: 18px; text-decoration: none;">&#x2190; Back</a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </section>
+</body>
+</html>
